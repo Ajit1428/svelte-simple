@@ -29,13 +29,15 @@
 	];
 </script>
 
-<div class="mt-[3.8rem] border-2 shadow-lg relative md:mx[700px] md:mt-[3.4rem]">
-	<button class="absolute bg-[#129575] p-4 rounded-full bottom-[2rem] left-[13rem] md:left-[12rem]">
-		<PlusIcon class="text-white" />
-	</button>
-	<div class="flex justify-between p-4">
-		{#each icons as { icon: IconR }}
-			<div class="text-slate-400"><IconR /></div>
-		{/each}
+<div class="fixed bottom-0 w-full">
+	<div class="border-2 shadow-lg relative max-w-[500px] mx-auto">
+		<button class="absolute bg-[#129575] p-4 rounded-full left-[45%] bottom-[50%]">
+			<PlusIcon class="text-white" />
+		</button>
+		<div class="flex justify-center items-center space-x-[7rem] p-4">
+			{#each icons as { icon: IconR }}
+				<div class="text-slate-400"><IconR /></div>
+			{/each}
+		</div>
 	</div>
 </div>

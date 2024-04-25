@@ -3,8 +3,8 @@
 	import { MoveRight } from 'lucide-svelte';
 </script>
 
-<main class="h-full w-full">
-	<div class="main-img text-white md:mx-[700px]">
+<main class="h-full w-full max-w-[500px] mx-auto">
+	<div class="main-img text-white">
 		<div class="flex flex-col items-center h-full gap-2">
 			<div class="flex flex-col items-center gap-4 mt-[8rem]">
 				<ChefHat class=" h-[8rem] w-[8rem]" />

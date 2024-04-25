@@ -58,7 +58,7 @@
 	<input
 		type="text"
 		placeholder="Search for the recipe"
-		class="p-4 rounded-xl border-2 outline-none w-[20rem] md:w-[25rem]"
+		class="p-4 rounded-xl border-2 outline-none w-[25rem]"
 		on:input={handleQueryChange}
 	/>
 	<span class="text-white bg-[#129575] p-4 rounded-xl ml-6">

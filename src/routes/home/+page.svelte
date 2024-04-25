@@ -10,7 +10,7 @@
 	let category = ['All', 'Indian', 'Italian', 'Asian'];
 </script>
 
-<div class="m-10 overflow-y-hidden md:mx-[700px] md:my-0 md:px-10">
+<div class=" overflow-y-hidden max-w-[500px] mx-auto p-2">
 	<div class="flex justify-between items-center">
 		<div class="flex flex-col mt-8">
 			<span class="text-[2rem] font-semibold">Hello Ajit</span>
@@ -22,12 +22,12 @@
 			</SignedIn>
 		</div>
 	</div>
-	<div class="flex items-center justify-between mt-[4rem]">
+	<div class="flex items-center justify-between mt-[3rem]">
 		<a href="/search">
 			<input
 				type="text"
 				placeholder="Search for the recipe"
-				class="p-4 rounded-xl border-2 outline-none w-[20rem]"
+				class="p-4 rounded-xl border-2 outline-none w-[25rem]"
 			/>
 		</a>
 		<span class="text-white bg-[#129575] p-4 rounded-xl ml-6">
@@ -56,6 +56,4 @@
 		<RecipeReview />
 	</div>
 </div>
-<div class="mt-10 md:mx-[734px]">
-	<HomeFooter />
-</div>
+<HomeFooter />
