@@ -62,28 +62,34 @@
 		on:input={handleQueryChange}
 	/>
 </div>
-<div class="grid grid-cols-2 grid-flow-row mt-4">
-	{#if query}
-		{#if loading}
-			<div class="flex items-center justify-center col-span-2">
-				<Loader />
-			</div>
+{#if loading}
+	<div class="flex items-center justify-center col-span-2">
+		<Loader />
+	</div>
+{:else}
+	<div class="grid grid-cols-2 grid-flow-row mt-4">
+		{#if query}
+			{#if loading}
+				<div class="flex items-center justify-center col-span-2">
+					<Loader />
+				</div>
+			{:else}
+				{#each mealData as meal}
+					<div class="flex flex-col mx-2 my-2 border-2 bg-gray-200 p-4 gap-2 rounded-lg">
+						<a href="/details/{meal.idMeal}">
+							<img src={meal.strMealThumb} alt="category" />
+							{meal?.strMeal}
+						</a>
+					</div>
+				{/each}
+			{/if}
 		{:else}
-			{#each mealData as meal}
+			{#each categoryData as category}
 				<div class="flex flex-col mx-2 my-2 border-2 bg-gray-200 p-4 gap-2 rounded-lg">
-					<a href="/details/{meal.idMeal}">
-						<img src={meal.strMealThumb} alt="category" />
-						{meal?.strMeal}
-					</a>
+					<img src={category.strCategoryThumb} alt="category" />
+					{category?.strCategory}
 				</div>
 			{/each}
 		{/if}
-	{:else}
-		{#each categoryData as category}
-			<div class="flex flex-col mx-2 my-2 border-2 bg-gray-200 p-4 gap-2 rounded-lg">
-				<img src={category.strCategoryThumb} alt="category" />
-				{category?.strCategory}
-			</div>
-		{/each}
-	{/if}
-</div>
+	</div>
+{/if}
