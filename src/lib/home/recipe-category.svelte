@@ -4,13 +4,14 @@
 	import { recipeMealCategorySearch } from '../../api/recipe-meal-category';
 
 	type Category = {
+		idMeal: string;
 		strMeal: string;
 		strMealThumb: string;
 	};
 
 	let meals: Category[] = [];
 	let selectedCategory = 'Chicken';
-	let category = ['Chicken', 'Breakfast', 'Starter', 'Seafood', 'Beef'];
+	let categories = ['Chicken', 'Breakfast', 'Starter', 'Seafood', 'Beef'];
 
 	onMount(async () => {
 		handleFetchAllCategories();
@@ -32,25 +33,27 @@
 </script>
 
 <div class="flex items-center justify-between gap-4 sticky">
-	{#each category as item}
+	{#each categories as category}
 		<button
 			class={cn(
 				'text-black  py-2',
-				selectedCategory === item && 'bg-[#129575] text-white  rounded-2xl px-4'
+				selectedCategory === category && 'bg-[#129575] text-white  rounded-2xl px-4'
 			)}
-			value={item}
-			on:click={() => handleSelectedCategory(item)}
+			value={category}
+			on:click={() => handleSelectedCategory(category)}
 		>
-			{item}
+			{category}
 		</button>
 	{/each}
 </div>
 <div class="flex items-center justify-between mt-[3rem] overflow-x-auto p-4">
 	{#each meals as meal}
 		<div class="border-2 mr-4 shadow-lg bg-gray-200 rounded-lg">
-			<div class="flex flex-col items-center w-[12rem] h-[18rem] p-4">
-				<img src={meal?.strMealThumb} alt="recipe" class="h-[12rem] w-[12rem]" />
-				{meal?.strMeal}
+			<div class="flex flex-col w-[12rem] h-[19rem] p-4 gap-2">
+				<a href="/details/{meal?.idMeal}">
+					<img src={meal?.strMealThumb} alt="recipe" class="h-[12rem] w-[12rem] mb-2" />
+					{meal?.strMeal}
+				</a>
 			</div>
 		</div>
 	{/each}

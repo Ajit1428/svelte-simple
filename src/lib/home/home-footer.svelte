@@ -25,8 +25,8 @@
 <div class="fixed bottom-0 w-full z-100">
 	<div class="border-2 shadow-lg max-w-[490px] mx-auto">
 		<div class="flex justify-center items-center space-x-[7rem] p-4">
-			{#each icons as { icon: IconR }}
-				<div class="text-slate-400"><IconR /></div>
+			{#each icons as { icon: IconComponent }}
+				<div class="text-slate-400"><IconComponent /></div>
 			{/each}
 		</div>
 	</div>

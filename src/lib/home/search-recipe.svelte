@@ -5,11 +5,13 @@
 	import Loader from './loader.svelte';
 
 	type Meal = {
+		idMeal: string;
 		strMeal: string;
 		strMealThumb: string;
 	};
 
 	type Category = {
+		idCategory: string;
 		strCategory: string;
 		strCategoryThumb: string;
 	};
@@ -67,18 +69,20 @@
 				<Loader />
 			</div>
 		{:else}
-			{#each mealData as category}
+			{#each mealData as meal}
 				<div class="flex flex-col mx-2 my-2 border-2 bg-gray-200 p-4 gap-2 rounded-lg">
-					<img src={category.strMealThumb} alt="category" />
-					{category?.strMeal}
+					<a href="/details/{meal.idMeal}">
+						<img src={meal.strMealThumb} alt="category" />
+						{meal?.strMeal}
+					</a>
 				</div>
 			{/each}
 		{/if}
 	{:else}
-		{#each categoryData as lCategory}
+		{#each categoryData as category}
 			<div class="flex flex-col mx-2 my-2 border-2 bg-gray-200 p-4 gap-2 rounded-lg">
-				<img src={lCategory.strCategoryThumb} alt="category" />
-				{lCategory?.strCategory}
+				<img src={category.strCategoryThumb} alt="category" />
+				{category?.strCategory}
 			</div>
 		{/each}
 	{/if}
