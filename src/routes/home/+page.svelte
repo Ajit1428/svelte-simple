@@ -1,13 +1,9 @@
 <script lang="ts">
 	import UserButton from 'clerk-sveltekit/client/UserButton.svelte';
 	import SignedIn from 'clerk-sveltekit/client/SignedIn.svelte';
-	import { Settings2 } from 'lucide-svelte';
-	import { cn } from '../../utils/cn';
-	import RecipeList from '$lib/home/recipe-list.svelte';
 	import RecipeReview from '$lib/home/recipe-review.svelte';
 	import HomeFooter from '$lib/home/home-footer.svelte';
-
-	let category = ['All', 'Indian', 'Italian', 'Asian'];
+	import RecipeCategory from '$lib/home/recipe-category.svelte';
 </script>
 
 <div class=" overflow-y-hidden max-w-[500px] mx-auto p-2">
@@ -23,35 +19,18 @@
 		</div>
 	</div>
 	<div class="flex items-center justify-between mt-[3rem]">
-		<a href="/search">
+		<a href="/search" class="w-full">
 			<input
 				type="text"
 				placeholder="Search for the recipe"
-				class="p-4 rounded-xl border-2 outline-none w-[25rem]"
+				class="p-4 rounded-xl border-2 outline-none w-full"
 			/>
 		</a>
-		<span class="text-white bg-[#129575] p-4 rounded-xl ml-6">
-			<Settings2 />
-		</span>
 	</div>
-	<div class="flex justify-between mt-[3rem]">
-		{#each category as item}
-			<ul>
-				<li
-					class={cn(
-						'text-black  py-2.5',
-						category[0] === item && 'bg-[#129575] text-white  rounded-2xl px-10'
-					)}
-				>
-					{item}
-				</li>
-			</ul>
-		{/each}
+	<div class="mt-[3rem]">
+		<RecipeCategory />
 	</div>
-	<div class="mt-[3rem] overflow-x-auto">
-		<RecipeList />
-	</div>
-	<div class="mt-10">
+	<div class="mt-6">
 		<span class="font-semibold text-xl">New Recipes</span>
 		<RecipeReview />
 	</div>

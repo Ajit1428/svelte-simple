@@ -1,16 +1,15 @@
 <script lang="ts">
-	import { Settings2 } from 'lucide-svelte';
-	import { recipeSearchByName } from '../../api/recipe-search';
-	import { listAllRecipe } from '../../api/recipe-list';
+	import { recipeSearchByMealName } from '../../api/recipe-meal-name';
+	import { allRecipeListByCategory } from '../../api/recipe-list-all-categories';
 	import { onMount } from 'svelte';
 	import Loader from './loader.svelte';
 
-	type MealList = {
+	type Meal = {
 		strMeal: string;
 		strMealThumb: string;
 	};
 
-	type CategoryList = {
+	type Category = {
 		strCategory: string;
 		strCategoryThumb: string;
 	};
@@ -19,7 +18,8 @@
 	let timer: ReturnType<typeof setTimeout>;
 	let loading = false;
 	$: query, handleRecipeSearch();
-	let mealData: MealList[] = [];
+	let mealData: Meal[] = [];
+	let categoryData: Category[] = [];
 
 	const handleQueryChange = (ev: Event) => {
 		clearTimeout(timer);
@@ -33,7 +33,7 @@
 	const handleRecipeSearch = async () => {
 		loading = true;
 		try {
-			let data = await recipeSearchByName(query);
+			let data = await recipeSearchByMealName(query);
 			mealData = data?.data?.meals;
 			loading = false;
 		} catch (error) {
@@ -42,11 +42,9 @@
 		}
 	};
 
-	let categoryData: CategoryList[] = [];
-
 	onMount(async () => {
 		try {
-			const fetchedData = await listAllRecipe();
+			const fetchedData = await allRecipeListByCategory();
 			categoryData = fetchedData?.data?.categories;
 		} catch (error) {
 			console.log(error);
@@ -54,16 +52,13 @@
 	});
 </script>
 
-<div class="flex items-center justify-between mt-[2rem] overflow-y-auto">
+<div class="flex items-center justify-between mt-[2rem]">
 	<input
 		type="text"
 		placeholder="Search for the recipe"
-		class="p-4 rounded-xl border-2 outline-none w-[25rem]"
+		class="p-4 rounded-xl border-2 outline-none w-full"
 		on:input={handleQueryChange}
 	/>
-	<span class="text-white bg-[#129575] p-4 rounded-xl ml-6">
-		<Settings2 />
-	</span>
 </div>
 <div class="grid grid-cols-2 grid-flow-row mt-4">
 	{#if query}
